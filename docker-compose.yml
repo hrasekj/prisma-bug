@@ -1,0 +1,20 @@
+version: '3'
+services:
+  server:
+    build: ./
+    restart: unless-stopped
+    command: 'node index.js'
+    ports:
+      - 127.0.0.1:8888:8888
+    networks:
+      - prisma_bug_net
+
+  mariadb:
+    image: mariadb:10.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=foobared
+    networks:
+      - prisma_bug_net
+
+networks:
+  prisma_bug_net:

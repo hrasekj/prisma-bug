@@ -1,0 +1,10 @@
+FROM node:16.3
+
+WORKDIR /app
+COPY . .
+
+ARG USER_ID
+ARG GROUP_ID
+USER ${USER_ID:-0}:${GROUP_ID:-0}
+
+RUN npm install
